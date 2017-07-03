@@ -11,7 +11,7 @@ public class ImageUtils {
 	public static void main(String[] args) throws IOException{
 		
 		   //WebPImageReader wr = new WebPImageReader(null);
-		   BufferedImage bi = ImageIO.read(new File("E://5e.webp"));
+		   BufferedImage bi = ImageIO.read(new File("E://a//b11.jpg"));
 		   int height = bi.getHeight();
 		   int width = bi.getWidth();
 		   System.out.println(height);
@@ -42,7 +42,7 @@ public class ImageUtils {
 			   }
 		   }
 		   
-		   File file = new File("E://5se.webp");
+		   File file = new File("E://b11.jpg");
 		   ImageIO.write(ci, "jpg", file);
 	}
 

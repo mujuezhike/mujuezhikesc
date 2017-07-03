@@ -64,10 +64,10 @@ public class TianYanChaTest {
 		 
 		WebClient webClient = new WebClient(BrowserVersion.CHROME);
 
-		// ProxyConfig proxyConfig = new ProxyConfig();
-		// proxyConfig.setProxyHost("119.90.248.245");
-		// proxyConfig.setProxyPort(9999);
-		// webClient.getOptions().setProxyConfig(proxyConfig);
+		ProxyConfig proxyConfig = new ProxyConfig();
+		proxyConfig.setProxyHost("121.31.146.28");
+		proxyConfig.setProxyPort(8123);
+		webClient.getOptions().setProxyConfig(proxyConfig);
 
 		webClient.getOptions().setCssEnabled(true);
 		webClient.getOptions().setJavaScriptEnabled(true);
