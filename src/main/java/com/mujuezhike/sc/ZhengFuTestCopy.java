@@ -21,11 +21,11 @@ import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
-public class ZhengFuTest {
+public class ZhengFuTestCopy {
 
 	public static void main(String[] args) throws FailingHttpStatusCodeException, MalformedURLException, IOException {
 		// TODO Auto-generated method stub
-		WebClient webClient = new WebClient(BrowserVersion.FIREFOX_52);
+		WebClient webClient = new WebClient(BrowserVersion.BEST_SUPPORTED);
 
 		// ProxyConfig proxyConfig = new ProxyConfig();
 		// proxyConfig.setProxyHost("119.90.248.245");
@@ -59,7 +59,7 @@ public class ZhengFuTest {
 			System.out.println(srb.getJavaScriptResult().toString());
 			ScriptResult srp = page2.executeJavaScript("$('#btn_query').click();");
 			System.out.println(srp.getJavaScriptResult().toString());
-			Thread.sleep(4000);
+			Thread.sleep(1000);
 			ScriptResult uneim = page2.executeJavaScript("$('.gt_cut_fullbg_slice').css(\"background-image\")");
 			System.out.println(uneim.getJavaScriptResult().toString());
 			ScriptResult ndjme = page2.executeJavaScript("$('.gt_cut_bg_slice').css(\"background-image\")");
@@ -117,69 +117,59 @@ public class ZhengFuTest {
 //			System.out.println(rdtop1);
 //			System.out.println(rdleft1);
 			
-			page2.executeJavaScript("var mm1 = document.createEvent('MouseEvent');mm1.initMouseEvent('mousemove', true, true, mm1.view,0, -363, 512, -363, 417,false, false, false, false,0, null);document.dispatchEvent(mm1);");
-			//Thread.sleep(1000);
-			page2.executeJavaScript("var md1 = document.createEvent('MouseEvent');md1.initMouseEvent('mousedown', true, true, md1.view,0, -363, 515, -363, 420,false, false, false, false,0, null);document.getElementById('sdsda11').dispatchEvent(md1);");
-			//Thread.sleep(1000);
+			page2.executeJavaScript("var mm1 = document.createEvent('MouseEvent');mm1.initMouseEvent('mousemove', true, true, mm1.view,0, -361, 512, -361, 417,false, false, false, false,0, null);document.dispatchEvent(mm1);");
+			Thread.sleep(1000);
+			page2.executeJavaScript("var md1 = document.createEvent('MouseEvent');md1.initMouseEvent('mousedown', true, true, md1.view,0, -361, 515, -361, 420,false, false, false, false,0, null);document.getElementById('sdsda11').dispatchEvent(md1);");
+			Thread.sleep(1000);
 			ScriptResult bbbefd = page2.executeJavaScript("$('#sdsda11').attr('class');");
 			System.out.println(bbbefd.getJavaScriptResult()+"|"+ris[0]+"|"+ris[1]);
 			ScriptResult b1ddbbefd = page2.executeJavaScript("$('#sdsda11').css('left');");
 			System.out.println(b1ddbbefd.getJavaScriptResult());
 			
 			ScriptResult qweqweq1w7 = page2.executeJavaScript("$('.gt_ajax_tip').attr('class');");
-			//Thread.sleep(100);
+			Thread.sleep(100);
 			System.out.println(qweqweq1w7.getJavaScriptResult());
 			
-//			//一格一格移动
-			for(int i=0;i<=(ris[1]-22);){
+			int flag = 0;
+//			//一格一格移动 
+			for(double i=0;/**i<=(ris[1]-22)**/;i++){
 				
-				int l = i+0;
+				double l = i+0;
 				Random rd = new Random();
 				int yiue= rd.nextInt(10);
-				l = i-yiue+5;
+				//l = i-yiue+5;
 				int yiuee= rd.nextInt(10);
+				if(flag == 0 && i>=30 && yiue <= 6){
+					i--;
+				}
+				if(flag == 0 && i==ris[1]){
+					flag = 1;
+				}
+				if(flag == 1 && i == ris[1] ){
+					i--;break;
+				}
+				if(flag == 1 && yiue <= 4){
+					i--;
+				}
 				
-				page2.executeJavaScript("var mm2 = document.createEvent('MouseEvent');mm2.initMouseEvent('mousemove', true, true, mm2.view,0, "+(-339 +i-24 )+", "+( 512-yiuee+5)+", "+(-339 +i-24 )+","+( 417-yiuee+5)+",false, false, false, false,0, null);document.dispatchEvent(mm2);");
+				
+				page2.executeJavaScript("var mm2 = document.createEvent('MouseEvent');mm2.initMouseEvent('mousemove', true, true, mm2.view,0, "+(-339 +i-22)+", "+( 512-yiuee+5)+", "+(-339 +i-22)+","+( 417-yiuee+5)+",false, false, false, false,0, null);document.dispatchEvent(mm2);");
 				//Thread.sleep(10*yiue);
-				
 				ScriptResult bddbbefd = page2.executeJavaScript("$('#sdsda11').css('left');");
-				System.out.println(bddbbefd.getJavaScriptResult()+"||"+System.currentTimeMillis());
-				int heh = rd.nextInt(100);
-				int[] speed = {1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,2,3,3,3,3,3,3,3,2,2,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,1,1};
-				
-				i=i+speed[i%40];
-				
-			}
-			//Thread.sleep(2000);
-			page2.executeJavaScript("var mm2 = document.createEvent('MouseEvent');mm2.initMouseEvent('mousemove', true, true, mm2.view,0, "+(-339 +ris[1]-23-24 )+", 512, "+(-339 +ris[1]-23-24 )+", 417,false, false, false, false,0, null);document.dispatchEvent(mm2);");
-			ScriptResult bddbbefd = page2.executeJavaScript("$('#sdsda11').css('left');");
-			System.out.println(bddbbefd.getJavaScriptResult());
-			//Thread.sleep(2000);
+				System.out.println(bddbbefd.getJavaScriptResult());
+				//Thread.sleep(10);	
+			}	
 			
-			page2.executeJavaScript("var mu1 = document.createEvent('MouseEvent');mu1.initMouseEvent('mouseup', true, true, mu1.view,0, "+(-339 +ris[1]-23-24 )+", 512, "+(-339 +ris[1]-23-24 )+", 417,false, false, false, false,0, null);document.getElementById('sdsda11').dispatchEvent(mu1);");
-
-			//一格一格移动
-			for(int i=0;i<=(ris[1]-22);){
-				
-				int l = i+0;
-				Random rd = new Random();
-				int yiue= rd.nextInt(4);
-				int ii = yiue + 2;
-				
-				page2.executeJavaScript("var mm2 = document.createEvent('MouseEvent');mm2.initMouseEvent('mousemove', true, true, mm2.view,0, "+( -339+ris[1]-23-24+ii )+", 512, "+( -339+ris[1]-23-24+ii )+",417,false, false, false, false,0, null);document.dispatchEvent(mm2);");
-				//Thread.sleep(10*yiue);
-				
-				ScriptResult cbddbbefd = page2.executeJavaScript("$('#sdsda11').css('left');");
-				System.out.println(cbddbbefd.getJavaScriptResult()+"||"+System.currentTimeMillis());
-				int heh = rd.nextInt(100);
-				
-				i++;
-				
-			}
+			Thread.sleep(300);
+			page2.executeJavaScript("var mm2 = document.createEvent('MouseEvent');mm2.initMouseEvent('mousemove', true, true, mm2.view,0, "+(-339 +ris[1]-22 )+", 523, "+(-339 +ris[1]-22 )+", 428,false, false, false, false,0, null);document.dispatchEvent(mm2);");
+			ScriptResult bddeebbefd = page2.executeJavaScript("$('#sdsda11').css('left');");
+			System.out.println(bddeebbefd.getJavaScriptResult());
+			Thread.sleep(300);
 			
+			page2.executeJavaScript("var mu1 = document.createEvent('MouseEvent');mu1.initMouseEvent('mouseup', true, true, mu1.view,0, "+(-339 +ris[1]-22-22 )+", 523, "+(-339 +ris[1]-22-22 )+", 428,false, false, false, false,0, null);document.getElementById('sdsda11').dispatchEvent(mu1);");
 //			page2.executeJavaScript("var mm2 = document.createEvent('MouseEvent');mm2.initMouseEvent('mousemove', true, true, mm2.view,0, "+(-339 +ris[1]-22-22 )+", 523, "+(-339 +ris[1]-22-22 )+", 428,false, false, false, false,0, null);document.dispatchEvent(mm2);");
-//			ScriptResult cddbbefd = page2.executeJavaScript("$('#sdsda11').css('left');");
-//			System.out.println(cddbbefd.getJavaScriptResult());
+			ScriptResult cddbbefd = page2.executeJavaScript("$('#sdsda11').css('left');");
+			System.out.println(cddbbefd.getJavaScriptResult());
 //			Thread.sleep(19);
 //			page2.executeJavaScript("var mm2 = document.createEvent('MouseEvent');mm2.initMouseEvent('mousemove', true, true, mm2.view,0, "+(-339 +ris[1]-22-20 )+", 522, "+(-339 +ris[1]-22-20 )+", 427,false, false, false, false,0, null);document.dispatchEvent(mm2);");
 //			ScriptResult cddbbefd1 = page2.executeJavaScript("$('#sdsda11').css('left');");
