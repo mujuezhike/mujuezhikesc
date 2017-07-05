@@ -19,11 +19,13 @@ public class TianYanChaSearchTest {
 
 	public static void main(String args[]) throws IOException, InterruptedException {
 		
-		File file = new File("D://b.txt");
-		OutputStream o = new FileOutputStream(file); 
+		
 
 		//3264311
-		for (long s = 12345; s < 10000000; s++) {
+		for (long s = 12345; s < 100000; s++) {
+			
+			File file = new File("D://zklist//"+String.valueOf(s)+".txt");
+			OutputStream o = new FileOutputStream(file); 
 
 			String code = Long.toString(s);
 			try {
@@ -39,6 +41,7 @@ public class TianYanChaSearchTest {
 				//o.write(name.getBytes());
 				
 				Thread.sleep(2000);
+				o.close();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -49,8 +52,6 @@ public class TianYanChaSearchTest {
 
 	public static List<String> findName(String searchBean) throws ClientProtocolException, IOException {
 		
-		
-		 
 		WebClient webClient = new WebClient(BrowserVersion.CHROME);
 		
 		webClient.setHTMLParserListener(null);
@@ -68,29 +69,30 @@ public class TianYanChaSearchTest {
 
 		HtmlPage page = webClient.getPage("http://www.tianyancha.com/search?key="+searchBean+"&checkFrom=searchBox");
 		try {
-			Thread.sleep(20000);
-			webClient.getJavaScriptEngine().shutdown();
+			Thread.sleep(4000);
 			System.out.println(333333);
+			DomNodeList<DomElement> list = page.getElementsByTagName("a");
+			List<String> slist = new ArrayList<String>();
+			for (int i = 0; i < list.size(); i++) {
+
+				DomElement de = list.get(i);
+				String uim = de.getAttribute("class");
+				if (uim.equals("query_name search-new-color sv-search-company")) {
+					System.out.println("|||||||||||||||||========================42423432423" + de.getTextContent());
+					String m = de.getTextContent();
+					String ucm = de.getAttribute("href");
+					slist.add(ucm);
+
+				}
+			}
+			
+			return slist;
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		DomNodeList<DomElement> list = page.getElementsByTagName("a");
-		List<String> slist = new ArrayList<String>();
-		for (int i = 0; i < list.size(); i++) {
-
-			DomElement de = list.get(i);
-			String uim = de.getAttribute("class");
-			if (uim.equals("query_name search-new-color ng-isolate-scope")) {
-				System.out.println("|||||||||||||||||========================42423432423" + de.getTextContent());
-				String m = de.getTextContent();
-				String ucm = de.getAttribute("href");
-				slist.add(ucm);
-
-			}
-		}
+		return null;
 		
-		return slist;
 
 	}
 

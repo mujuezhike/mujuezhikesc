@@ -18,21 +18,22 @@ import com.gargoylesoftware.htmlunit.ScriptResult;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebWindow;
 import com.gargoylesoftware.htmlunit.html.DomElement;
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 public class ZhengFuTest {
 
 	public static void main(String[] args) throws FailingHttpStatusCodeException, MalformedURLException, IOException {
-		// TODO Auto-generated method stub
+		
 		WebClient webClient = new WebClient(BrowserVersion.FIREFOX_52);
 
 		// ProxyConfig proxyConfig = new ProxyConfig();
 		// proxyConfig.setProxyHost("119.90.248.245");
 		// proxyConfig.setProxyPort(9999);
 		// webClient.getOptions().setProxyConfig(proxyConfig);
+		webClient.getOptions().setRedirectEnabled(true);
+		webClient.getOptions().setScreenWidth(2048);
+		webClient.getOptions().setScreenHeight(1152);
 		webClient.getOptions().setDownloadImages(true);
-		webClient.getOptions().isRedirectEnabled();
 		webClient.getOptions().setCssEnabled(true);
 		webClient.getOptions().setJavaScriptEnabled(true);
 		webClient.getOptions().setActiveXNative(true);

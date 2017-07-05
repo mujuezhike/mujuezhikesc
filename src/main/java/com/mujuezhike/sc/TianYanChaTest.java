@@ -64,21 +64,21 @@ public class TianYanChaTest {
 		 
 		WebClient webClient = new WebClient(BrowserVersion.CHROME);
 
-		ProxyConfig proxyConfig = new ProxyConfig();
-		proxyConfig.setProxyHost("121.31.146.28");
-		proxyConfig.setProxyPort(8123);
-		webClient.getOptions().setProxyConfig(proxyConfig);
+		//ProxyConfig proxyConfig = new ProxyConfig();
+		//proxyConfig.setProxyHost("121.31.146.28");
+		//proxyConfig.setProxyPort(8123);
+		//webClient.getOptions().setProxyConfig(proxyConfig);
 
 		webClient.getOptions().setCssEnabled(true);
 		webClient.getOptions().setJavaScriptEnabled(true);
 		webClient.getOptions().setTimeout(20000);
+		//webClient.getOptions()
 		webClient.setJavaScriptTimeout(20000);
 		webClient.getJavaScriptEngine().setJavaScriptTimeout(20000);
 
 		HtmlPage page = webClient.getPage("http://www.tianyancha.com/company/" + num);
 		try {
-			Thread.sleep(20000);
-			webClient.getJavaScriptEngine().shutdown();
+			Thread.sleep(4000);
 			System.out.println(333333);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -89,7 +89,7 @@ public class TianYanChaTest {
 
 			DomElement de = list.get(i);
 			String uim = de.getAttribute("class");
-			if (uim.equals("f18 in-block vertival-middle ng-binding")) {
+			if (uim.equals("f18 in-block vertival-middle")) {
 				System.out.println("|||||||||||||||||========================42423432423" + de.getTextContent());
 				String m = de.getTextContent();
 				return m;
