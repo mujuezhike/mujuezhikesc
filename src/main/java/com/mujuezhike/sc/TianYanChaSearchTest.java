@@ -6,40 +6,56 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.apache.http.client.ClientProtocolException;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
+import com.gargoylesoftware.htmlunit.ProxyConfig;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.DomNodeList;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.mujuezhike.sc.spider.ipcontrol.DynamicIpContainer;
 
 public class TianYanChaSearchTest {
+	
+	static int eer = 0;
 
 	public static void main(String args[]) throws IOException, InterruptedException {
 		
+		DynamicIpContainer.init();
+		Thread.sleep(15000);
 		//3264311
-		for (long s = 22345; s < 100000; s++) {
-			
-			File file = new File("C://zklist//"+String.valueOf(s)+".txt");
-			OutputStream o = new FileOutputStream(file); 
+		for (long s = 905; s < 100000; s++) {
+			 
 
 			String code = Long.toString(s);
 			try {
-				o.write(code.getBytes());
-				o.write("\r\n".getBytes());
+				
 				List<String> namelist = findName(code);
 				if(namelist!=null && namelist.size()>0){
+
+					File file = new File("C://zklist//"+String.valueOf(s)+".txt");
+					OutputStream o = new FileOutputStream(file);
+					o.write(code.getBytes());
+					o.write("\r\n".getBytes());
 					for(int i=0;i<namelist.size();i++){
 						o.write(namelist.get(i).getBytes());
 						o.write("\r\n".getBytes());
+					}
+					o.close();
+				}else{
+					System.out.println("changeip::}}");
+					eer++;
+					if(eer >= 10){
+						eer = 0;
 					}
 				}
 				//o.write(name.getBytes());
 				
 				Thread.sleep(2000);
-				o.close();
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -48,7 +64,7 @@ public class TianYanChaSearchTest {
 
 	}
 
-	public static List<String> findName(String searchBean) throws ClientProtocolException, IOException {
+	public static List<String> findName(String searchBean) throws ClientProtocolException, IOException, InterruptedException {
 		
 		WebClient webClient = new WebClient(BrowserVersion.CHROME);
 		
@@ -58,12 +74,20 @@ public class TianYanChaSearchTest {
 		// proxyConfig.setProxyHost("140.255.236.138");
 		// proxyConfig.setProxyPort(8118);
 		// webClient.getOptions().setProxyConfig(proxyConfig);
+		String ipport = DynamicIpContainer.dynamicips.get(eer);
+		if (ipport != null) {
+			ProxyConfig proxyConfig = new ProxyConfig(ipport.split(":")[0], Integer.parseInt(ipport.split(":")[1]));
+			webClient.getOptions().setProxyConfig(proxyConfig);
+		}else {
+			System.out.print(" ");
+			return null;
+		}
 
 		webClient.getOptions().setCssEnabled(true);
 		webClient.getOptions().setJavaScriptEnabled(true);
-		webClient.getOptions().setTimeout(20000);
-		webClient.setJavaScriptTimeout(20000);
-		webClient.getJavaScriptEngine().setJavaScriptTimeout(20000);
+		webClient.getOptions().setTimeout(30000);
+		webClient.setJavaScriptTimeout(30000);
+		webClient.getJavaScriptEngine().setJavaScriptTimeout(30000);
 
 		HtmlPage page = webClient.getPage("http://www.tianyancha.com/search?key="+searchBean+"&checkFrom=searchBox");
 		try {
@@ -89,6 +113,8 @@ public class TianYanChaSearchTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		Thread.sleep(2000);
 		return null;
 		
 	}
