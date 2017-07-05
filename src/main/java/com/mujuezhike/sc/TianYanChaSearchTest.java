@@ -19,12 +19,10 @@ public class TianYanChaSearchTest {
 
 	public static void main(String args[]) throws IOException, InterruptedException {
 		
-		
-
 		//3264311
-		for (long s = 12345; s < 100000; s++) {
+		for (long s = 22345; s < 100000; s++) {
 			
-			File file = new File("D://zklist//"+String.valueOf(s)+".txt");
+			File file = new File("C://zklist//"+String.valueOf(s)+".txt");
 			OutputStream o = new FileOutputStream(file); 
 
 			String code = Long.toString(s);
@@ -93,7 +91,6 @@ public class TianYanChaSearchTest {
 		}
 		return null;
 		
-
 	}
 
 }
