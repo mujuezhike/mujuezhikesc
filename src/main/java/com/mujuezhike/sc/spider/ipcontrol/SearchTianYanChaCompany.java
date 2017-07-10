@@ -6,7 +6,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Random;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpHost;
+import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.SystemDefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.ProxyConfig;
@@ -14,6 +22,7 @@ import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 
+@SuppressWarnings("deprecation")
 public class SearchTianYanChaCompany {
 	
 	private static String[] strs = {
@@ -71,7 +80,7 @@ public class SearchTianYanChaCompany {
 			Thread.sleep(2000);
 			try {
 				
-				Long emunu = findName(strs[s]);
+				Long emunu = findNameStatic(strs[s]);
 				if(emunu!=null && emunu>0){
 					
 					s++;
@@ -115,6 +124,7 @@ public class SearchTianYanChaCompany {
 			webClient.getOptions().setProxyConfig(proxyConfig);
 		}else {
 			System.out.print(" ");
+			webClient.close();
 			return null;
 		}
 
@@ -132,7 +142,7 @@ public class SearchTianYanChaCompany {
 			String s = page.asXml();
 			if(s.contains("f18 in-block vertival-middle")){
 				getFileFromBytes(s,"C:\\zkbean\\"+codenum+".html");
-				
+				webClient.close();
 				return 1l;
 				
 			}else{
@@ -146,10 +156,62 @@ public class SearchTianYanChaCompany {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		webClient.close();
 		//Thread.sleep(2000);
 		return 0l;
 		
+	}
+	
+	public static Long findNameStatic(String url) throws ClientProtocolException, IOException, InterruptedException {
+		
+		HttpClient httpClient = new SystemDefaultHttpClient();
+		String response = "";
+				 
+	    HttpGet httpGet = new HttpGet(url);
+	    String ipport = DynamicIpContainer.dynamicips.get(eer);
+		if (ipport != null) {
+			HttpHost proxy = new HttpHost(ipport.split(":")[0], Integer.parseInt(ipport.split(":")[1]),"http");
+		    RequestConfig config = RequestConfig.custom().setProxy(proxy).setConnectTimeout(1000 * 60).build();
+		    httpGet.setConfig(config);
+		}else{
+			System.out.print(" ");
+			return null;
+		}
+	
+		String codenum = url.substring(url.lastIndexOf("/")+1);       
+	    HttpResponse httpResponse = httpClient.execute(httpGet);	
+		// ProxyConfig proxyConfig = new ProxyConfig();
+		// proxyConfig.setProxyHost("140.255.236.138");
+		// proxyConfig.setProxyPort(8118);
+		// webClient.getOptions().setProxyConfig(proxyConfig);
+		try {
+			Thread.sleep(4000);
+			if(httpResponse.getStatusLine().getStatusCode() == 200){
+                //System.out.println("访问成功");
+                HttpEntity httpEntity = httpResponse.getEntity();
+                response = EntityUtils.toString(httpEntity);
+                //getFileFromBytes(response,"E:\\webspider\\u.html");
+                //System.out.println(response);
+                
+                    if(response.contains("f18 in-block vertival-middle")){
+	    				getFileFromBytes(response,"C:\\zkbean\\"+codenum+".html");
+	    				return 1l;
+	    				
+	    			}else{
+	    				Random rd = new Random();
+	    				int em = rd.nextInt(10);
+	    				getFileFromBytes(response,"C:\\zkbean\\eerr"+em+".html");
+	    				return 0l;
+	    			}
+			}
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//Thread.sleep(2000);
+		return 0l;
 	}
 	
 	 /**  
@@ -184,5 +246,7 @@ public class SearchTianYanChaCompany {
 	     return file;  
 	     
 	 } 
+	 
+	 
 
 }
