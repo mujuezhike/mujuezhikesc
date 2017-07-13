@@ -160,23 +160,23 @@ public class ZhengFuTest {
 			page2.executeJavaScript("var mu1 = document.createEvent('MouseEvent');mu1.initMouseEvent('mouseup', true, true, mu1.view,0, "+(-339 +ris[1]-23-24 )+", 512, "+(-339 +ris[1]-23-24 )+", 417,false, false, false, false,0, null);document.getElementById('sdsda11').dispatchEvent(mu1);");
 
 			//一格一格移动
-			for(int i=0;i<=(ris[1]-22);){
-				
-				int l = i+0;
-				Random rd = new Random();
-				int yiue= rd.nextInt(4);
-				int ii = yiue + 2;
-				
-				page2.executeJavaScript("var mm2 = document.createEvent('MouseEvent');mm2.initMouseEvent('mousemove', true, true, mm2.view,0, "+( -339+ris[1]-23-24+ii )+", 512, "+( -339+ris[1]-23-24+ii )+",417,false, false, false, false,0, null);document.dispatchEvent(mm2);");
-				//Thread.sleep(10*yiue);
-				
-				ScriptResult cbddbbefd = page2.executeJavaScript("$('#sdsda11').css('left');");
-				System.out.println(cbddbbefd.getJavaScriptResult()+"||"+System.currentTimeMillis());
-				int heh = rd.nextInt(100);
-				
-				i++;
-				
-			}
+//			for(int i=0;i<=(ris[1]-22);){
+//				
+//				int l = i+0;
+//				Random rd = new Random();
+//				int yiue= rd.nextInt(4);
+//				int ii = yiue + 2;
+//				
+//				page2.executeJavaScript("var mm2 = document.createEvent('MouseEvent');mm2.initMouseEvent('mousemove', true, true, mm2.view,0, "+( -339+ris[1]-23-24+ii )+", 512, "+( -339+ris[1]-23-24+ii )+",417,false, false, false, false,0, null);document.dispatchEvent(mm2);");
+//				//Thread.sleep(10*yiue);
+//				
+//				ScriptResult cbddbbefd = page2.executeJavaScript("$('#sdsda11').css('left');");
+//				System.out.println(cbddbbefd.getJavaScriptResult()+"||"+System.currentTimeMillis());
+//				int heh = rd.nextInt(100);
+//				
+//				i++;
+//				
+//			}
 			
 //			page2.executeJavaScript("var mm2 = document.createEvent('MouseEvent');mm2.initMouseEvent('mousemove', true, true, mm2.view,0, "+(-339 +ris[1]-22-22 )+", 523, "+(-339 +ris[1]-22-22 )+", 428,false, false, false, false,0, null);document.dispatchEvent(mm2);");
 //			ScriptResult cddbbefd = page2.executeJavaScript("$('#sdsda11').css('left');");
