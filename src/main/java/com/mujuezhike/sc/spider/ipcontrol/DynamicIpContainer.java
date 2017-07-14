@@ -28,25 +28,25 @@ public class DynamicIpContainer {
 		
 		new Thread(new IpChanger()).start();
 		
-		for(;;){
-			
-			try {
-				Thread.sleep(7000);
-				for(int i=0;i<dynamicips.size();i++){
-					
-					System.out.print(dynamicips.get(i) + "  ");
-					
-				}
-				System.out.print(nextchangeIpCount);
-				System.out.println();
-				
-			} catch (Exception e) {
-				
-				
-				
-				e.printStackTrace();
-			}
-		}
+//		for(;;){
+//			
+//			try {
+//				Thread.sleep(7000);
+//				for(int i=0;i<dynamicips.size();i++){
+//					
+//					System.out.print(dynamicips.get(i) + "  ");
+//					
+//				}
+//				System.out.print(nextchangeIpCount);
+//				System.out.println();
+//				
+//			} catch (Exception e) {
+//				
+//				
+//				
+//				e.printStackTrace();
+//			}
+//		}
 		
 	}
 	

@@ -33,7 +33,7 @@ public class TianYanChaSearchTest {
 		
 		String[] namearr = {
 				//"http://www.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
-				/**
+				
 				"http://bj.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://cq.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://sh.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
@@ -56,8 +56,7 @@ public class TianYanChaSearchTest {
 				"http://chizhou.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://xuancheng.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://fj.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
-				**/
-				/**
+				
 				"http://fzh.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://shamen.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://putian.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
@@ -84,8 +83,8 @@ public class TianYanChaSearchTest {
 				"http://meizhou.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://shanwei.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://heyuan.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
-				**/
-				/**"http://yangjiang.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
+				
+				"http://yangjiang.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://qingyuan.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://chaozhou.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://jieyang.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
@@ -109,8 +108,7 @@ public class TianYanChaSearchTest {
 				"http://nanning.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://liuzhou.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://guilin.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
-				**/
-				/**
+				
 				"http://wuzhou.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://beihai.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://fcg.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
@@ -137,8 +135,7 @@ public class TianYanChaSearchTest {
 				"http://sanya.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://hanzx.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://heb.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
-				**/
-				/**
+				
 				"http://sjz.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://tangshan.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://qhd.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
@@ -169,8 +166,7 @@ public class TianYanChaSearchTest {
 				"http://zhoukou.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://zmd.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://henzx.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
-				**/
-				/**
+				
 				"http://hlj.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://herb.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://qqhe.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
@@ -192,8 +188,7 @@ public class TianYanChaSearchTest {
 				"http://yichang.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://xiangyang.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://ezhou.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
-				**/
-				/**
+				
 				"http://jingmen.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://xiaogan.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://jingzhou.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
@@ -218,7 +213,7 @@ public class TianYanChaSearchTest {
 				"http://loudi.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://xxtjz.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://jl.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
-				**/
+				
 				"http://zhangchun.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://jilin.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
 				"http://siping.tianyancha.com/search/ola1?key=%E4%B9%B3%E4%B8%9A&searchType=company",
@@ -427,7 +422,7 @@ public class TianYanChaSearchTest {
 				if(page == 1){
 					namelist = findName(url);	
 				}else{
-					url.replace("ola1?", "ola1/p"+page+"?");
+					url = url.replace("ola1?", "ola1/p"+page+"?");
 					namelist = findName(url);
 				}
 				

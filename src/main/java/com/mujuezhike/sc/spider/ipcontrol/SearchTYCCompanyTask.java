@@ -15,69 +15,45 @@ import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.SystemDefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.LoggerFactory;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.ProxyConfig;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
-
-@SuppressWarnings("deprecation")
-public class SearchTianYanChaCompany {
+public class SearchTYCCompanyTask implements Runnable{
 	
-	private static String[] strs = {
-				"http://www.tianyancha.com/company/2353003534",
-				"http://www.tianyancha.com/company/1573941867",
-				"http://www.tianyancha.com/company/2342853020",
-				"http://www.tianyancha.com/company/2320991369",
-				"http://www.tianyancha.com/company/10011163",
-				"http://www.tianyancha.com/company/412134123",
-				"http://www.tianyancha.com/company/2965843677",
-				"http://www.tianyancha.com/company/507597961",
-				"http://www.tianyancha.com/company/107742559",
-				"http://www.tianyancha.com/company/1569353637",
-				"http://www.tianyancha.com/company/2386152253",
-				"http://www.tianyancha.com/company/2347380355",
-				"http://www.tianyancha.com/company/24737218",
-				"http://www.tianyancha.com/company/6190577",
-				"http://www.tianyancha.com/company/1489624914",
-				"http://www.tianyancha.com/company/1020652957",
-				"http://www.tianyancha.com/company/1235352165",
-				"http://www.tianyancha.com/company/834036114",
-				"http://www.tianyancha.com/company/346377121",
-				"http://www.tianyancha.com/company/2446658989",
-				"http://www.tianyancha.com/company/2316391462",
-				"http://www.tianyancha.com/company/1247140961",
-				"http://www.tianyancha.com/company/627364375",
-				"http://www.tianyancha.com/company/323387870",
-				"http://www.tianyancha.com/company/146023447",
-				"http://www.tianyancha.com/company/220616887",
-				"http://www.tianyancha.com/company/400623165",
-				"http://www.tianyancha.com/company/24508034",
-				"http://www.tianyancha.com/company/1273093215",
-				"http://www.tianyancha.com/company/2960565969",
-				"http://www.tianyancha.com/company/3504174",
-				"http://www.tianyancha.com/company/277799587",
-				"http://www.tianyancha.com/company/80191107",
-				"http://www.tianyancha.com/company/256299571",
-				"http://www.tianyancha.com/company/14128433",
-				"http://www.tianyancha.com/company/104886642",
-				"http://www.tianyancha.com/company/3039979713",
-				"http://www.tianyancha.com/company/491696388",
-				"http://www.tianyancha.com/company/6009707",
-				"http://www.tianyancha.com/company/2394895860"
-	};
-
+	private final static org.slf4j.Logger logger = LoggerFactory.getLogger(SearchTYCCompanyTask.class);
 	
-	static int eer = 0;
+	private final static String saveBasePath = "C:\\zkbean\\20170714new\\";
 
-	public static void main(String args[]) throws IOException, InterruptedException {
+	private String[] strs = null;
+	
+	private int eer = 0;
+	
+	public String[] getStrs() {
+		return strs;
+	}
+
+	public void setStrs(String[] strs) {
+		this.strs = strs;
+	}
+
+	public int getEer() {
+		return eer;
+	}
+
+	public void setEer(int eer) {
+		this.eer = eer;
+	}
+	
+	@Override
+	public void run() {
 		
-		DynamicIpContainer.init();
-		Thread.sleep(15000);
-		//3264311
+		logger.info(Thread.currentThread().getName()+":start");
 		for (int s = 0; s < strs.length;) {
-			Thread.sleep(2000);
+			
 			try {
 				
 				Long emunu = findName(strs[s]);
@@ -93,7 +69,6 @@ public class SearchTianYanChaCompany {
 					}
 				}
 				
-				//Thread.sleep(2000);
 				
 			} catch (Exception e) {
 				
@@ -105,10 +80,13 @@ public class SearchTianYanChaCompany {
 				}
 			}
 		}
-
+		
+		/** 切换新文件     **/
+		//ScheduleController.turnNextFileName();
+		
 	}
-
-	public static Long findName(String url) throws ClientProtocolException, IOException, InterruptedException {
+	
+	public Long findName(String url) throws ClientProtocolException, IOException, InterruptedException {
 		
 		WebClient webClient = new WebClient(BrowserVersion.CHROME);
 		
@@ -141,14 +119,14 @@ public class SearchTianYanChaCompany {
 			System.out.println(333333);
 			String s = page.asXml();
 			if(s.contains("f18 in-block vertival-middle")){
-				getFileFromBytes(s,"C:\\zkbean\\20170714\\"+codenum+".html");
+				getFileFromBytes(s,saveBasePath+codenum+".html");
 				webClient.close();
 				return 1l;
 				
 			}else{
 				Random rd = new Random();
 				int em = rd.nextInt(10);
-				getFileFromBytes(s,"C:\\zkbean\\20170714\\eerr"+em+".html");
+				getFileFromBytes(s,saveBasePath+"eerr"+em+".html");
 			}
 			
 			
@@ -162,7 +140,8 @@ public class SearchTianYanChaCompany {
 		
 	}
 	
-	public static Long findNameStatic(String url) throws ClientProtocolException, IOException, InterruptedException {
+	@Deprecated
+	public Long findNameStatic(String url) throws ClientProtocolException, IOException, InterruptedException {
 		
 		HttpClient httpClient = new SystemDefaultHttpClient();
 		String response = "";
@@ -194,13 +173,13 @@ public class SearchTianYanChaCompany {
                 //System.out.println(response);
                 
                     if(response.contains("f18 in-block vertival-middle")){
-	    				getFileFromBytes(response,"C:\\zkbean\\"+codenum+".html");
+	    				getFileFromBytes(response,"C:\\zkbean\\20170714\\"+codenum+".html");
 	    				return 1l;
 	    				
 	    			}else{
 	    				Random rd = new Random();
 	    				int em = rd.nextInt(10);
-	    				getFileFromBytes(response,"C:\\zkbean\\eerr"+em+".html");
+	    				getFileFromBytes(response,"C:\\zkbean\\20170714\\eerr"+em+".html");
 	    				return 0l;
 	    			}
 			}
@@ -246,7 +225,5 @@ public class SearchTianYanChaCompany {
 	     return file;  
 	     
 	 } 
-	 
-	 
 
 }
