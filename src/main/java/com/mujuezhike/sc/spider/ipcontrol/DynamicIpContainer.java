@@ -3,8 +3,6 @@ package com.mujuezhike.sc.spider.ipcontrol;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-
 /**
  * 全局IP存储器
  * @author mujuezhike

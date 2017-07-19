@@ -317,15 +317,6 @@ public class ZhengFuTest {
     	 
     	 BufferedImage bi = ImageIO.read(new File("E://b//"+name1));
 		 BufferedImage si = ImageIO.read(new File("E://b//"+name2));
-		 int height = bi.getHeight();
-		 int width = bi.getWidth();
-		 //System.out.println(height);
-		 //System.out.println(width);
-		 height = si.getHeight();
-		 width = si.getWidth();
-		 //System.out.println(height);
-		 //System.out.println(width);
-		
 		 BufferedImage ci = new BufferedImage(312, 116, BufferedImage.TYPE_INT_RGB);
 		 
 			   for(int x=0;x<116;x++){
@@ -333,23 +324,23 @@ public class ZhengFuTest {
 					   
 					   int m = bi.getRGB(y, x);
 					   int n = si.getRGB(y, x);
-					   int n1 = si.getRGB(y, x);
-					   int n2 = si.getRGB(y, x);
-					   int n3 = si.getRGB(y, x);
-					   int n4 = si.getRGB(y, x);
-					   int n5 = si.getRGB(y, x);
-					   int n6 = si.getRGB(y, x);
-					   int n7 = si.getRGB(y, x);
-					   int n8 = si.getRGB(y, x);
+//					   int n1 = si.getRGB(y, x);
+//					   int n2 = si.getRGB(y, x);
+//					   int n3 = si.getRGB(y, x);
+//					   int n4 = si.getRGB(y, x);
+//					   int n5 = si.getRGB(y, x);
+//					   int n6 = si.getRGB(y, x);
+//					   int n7 = si.getRGB(y, x);
+//					   int n8 = si.getRGB(y, x);
 					   if(y>0 && y<311 && x>0 && x<115){
-						   n1 = si.getRGB(y-1, x-1);
-						   n2 = si.getRGB(y-1, x);
-						   n3 = si.getRGB(y-1, x+1);
-						   n4 = si.getRGB(y, x-1);
-						   n5 = si.getRGB(y, x+1);
-						   n6 = si.getRGB(y+1, x-1);
-						   n7 = si.getRGB(y+1, x);
-						   n8 = si.getRGB(y+1, x+1);
+//						   n1 = si.getRGB(y-1, x-1);
+//						   n2 = si.getRGB(y-1, x);
+//						   n3 = si.getRGB(y-1, x+1);
+//						   n4 = si.getRGB(y, x-1);
+//						   n5 = si.getRGB(y, x+1);
+//						   n6 = si.getRGB(y+1, x-1);
+//						   n7 = si.getRGB(y+1, x);
+//						   n8 = si.getRGB(y+1, x+1);
 					   }
 					   //System.out.println(m+"|"+n);
 					   if(m==n

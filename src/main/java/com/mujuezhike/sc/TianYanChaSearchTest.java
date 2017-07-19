@@ -6,13 +6,11 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import org.apache.http.client.ClientProtocolException;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.ProxyConfig;
-import com.gargoylesoftware.htmlunit.ScriptResult;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.DomNodeList;
@@ -548,7 +546,7 @@ public class TianYanChaSearchTest {
 				String uim = de.getAttribute("class");
 				if (uim.equals("query_name search-new-color sv-search-company")) {
 					System.out.println("|||||||||||||||||========================42423432423" + de.getTextContent());
-					String m = de.getTextContent();
+//					String m = de.getTextContent();
 					String ucm = de.getAttribute("href");
 					slist.add(ucm);
 
