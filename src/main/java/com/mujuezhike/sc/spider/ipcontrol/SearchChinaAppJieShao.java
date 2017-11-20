@@ -4,22 +4,26 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Random;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.SystemDefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
+import com.gargoylesoftware.htmlunit.ProxyConfig;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 
 @SuppressWarnings("deprecation")
-public class SearchChinaApp {
+public class SearchChinaAppJieShao {
 	
 	public static int mmek = 1;
 //	private static String[] strs = {
@@ -73,11 +77,11 @@ public class SearchChinaApp {
 		//DynamicIpContainer.init();
 		//Thread.sleep(15000);
 		//3264311
-		for (int s = 130001; s < 999999;) {
+		for (int s = 152431; s < 999999;) {
 			Thread.sleep(100);
 			try {
 				
-				Long emunu = findName("https://www.chinapp.com/pinpai/"+s);
+				Long emunu = findName("https://www.chinapp.com/pinpai/jieshao/"+s);
 				if(emunu!=null && emunu>0){
 					
 					s++;
@@ -137,10 +141,10 @@ public class SearchChinaApp {
 		HtmlPage page = webClient.getPage(url);
 		try {
 			Thread.sleep(100);
-			System.out.println("sca");
+			System.out.println("scajs");
 			String s = page.asXml();
 			
-				getFileFromBytes(s,"C:\\zkbean\\pp20170824\\"+codenum+".html");
+				getFileFromBytes(s,"C:\\zkbean\\ppjs20171120\\"+codenum+".html");
 				webClient.close();
 				//mmek++;
 				return 1l;

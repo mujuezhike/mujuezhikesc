@@ -24,7 +24,7 @@ public class ZhengFuTest {
 
 	public static void main(String[] args) throws FailingHttpStatusCodeException, MalformedURLException, IOException {
 		
-		WebClient webClient = new WebClient(BrowserVersion.FIREFOX_52);
+		WebClient webClient = new WebClient(BrowserVersion.CHROME);
 
 		// ProxyConfig proxyConfig = new ProxyConfig();
 		// proxyConfig.setProxyHost("119.90.248.245");
