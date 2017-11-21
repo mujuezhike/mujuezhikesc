@@ -73,7 +73,7 @@ public class SearchChinaApp {
 		//DynamicIpContainer.init();
 		//Thread.sleep(15000);
 		//3264311
-		for (int s = 130001; s < 999999;) {
+		for (int s = 134006; s < 999999;) {
 			Thread.sleep(100);
 			try {
 				
