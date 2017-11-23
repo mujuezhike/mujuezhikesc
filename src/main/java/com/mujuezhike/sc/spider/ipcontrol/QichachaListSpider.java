@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +14,12 @@ public class QichachaListSpider {
 
 	public static void main(String[] args) throws Exception{
 		
-		List<String> list = getListFromFile(new File("/Users/boxu/procode/word/word1120.txt"));
+		List<String> list = getListFromFile(new File("C:\\zkbean\\word1120.txt"));
 		
-		for(int i=0;i<list.size();i++) {
-			Thread.sleep(200);
-			CommonStaticPageSpider.savePage("http://www.qichacha.com/search?key="+list.get(i), new File("/Users/boxu/procode"));
+		for(int i=30;i<list.size();i++) {
+			Thread.sleep(2000);
+			System.out.println(list.get(i));
+			CommonStaticPageSpider.savePage("http://www.qichacha.com/search?key="+URLEncoder.encode(list.get(i)), new File("C:\\zkbean\\qcclist"));
 		}
 
 	}
@@ -64,6 +66,7 @@ public class QichachaListSpider {
             default:    
                 code = "GBK";    
         }    
+        System.out.println(code);
         return code;  
 	}
 
