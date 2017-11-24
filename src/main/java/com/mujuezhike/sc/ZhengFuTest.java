@@ -44,94 +44,94 @@ public class ZhengFuTest {
 		// webClient.getOptions().setProxyConfig(proxyConfig);
 		/**test==**/
 		
-		webClient.setJavaScriptErrorListener(new JavaScriptErrorListener() {
-
-			@Override
-			public void scriptException(HtmlPage page, ScriptException scriptException) {
-				// TODO Auto-generated method stub
-				System.out.println(scriptException.getMessage());
-			}
-
-			@Override
-			public void timeoutError(HtmlPage page, long allowedTime, long executionTime) {
-				// TODO Auto-generated method stub
-				System.out.println(executionTime);
-			}
-
-			@Override
-			public void malformedScriptURL(HtmlPage page, String url, MalformedURLException malformedURLException) {
-				// TODO Auto-generated method stub
-				System.out.println(malformedURLException.getMessage());
-			}
-
-			@Override
-			public void loadScriptError(HtmlPage page, URL scriptUrl, Exception exception) {
-				// TODO Auto-generated method stub
-				System.out.println(exception.getMessage());
-			}
-			
-		});
-		webClient.setConfirmHandler(new ConfirmHandler() {
-
-			@Override
-			public boolean handleConfirm(Page page, String message) {
-				System.out.println("ConfirmHandler::"+page.getUrl());
-				System.out.println(message);
-				return false;
-			}
-			
-		});
-		webClient.setOnbeforeunloadHandler(new OnbeforeunloadHandler() {
-
-			@Override
-			public boolean handleEvent(Page page, String returnValue) {
-				System.out.println("AttachmentHandler::"+page.getUrl());
-				System.out.println(returnValue);
-				return false;
-			}
-			
-		});
-		webClient.setAttachmentHandler(new AttachmentHandler() {
-
-			@Override
-			public void handleAttachment(Page page) {
-				System.out.println("AttachmentHandler::"+page.getUrl());	
-			}
-			
-		});
-		webClient.addWebWindowListener(new WebWindowListener() {
-
-			@Override
-			public void webWindowOpened(WebWindowEvent event) {
-				System.out.println(event);
-				if(event.getNewPage()!=null) {
-					System.out.println("WebWindowEvent::"+event.getNewPage().getUrl());	
-				}
-				
-			}
-
-			@Override
-			public void webWindowContentChanged(WebWindowEvent event) {
-				System.out.println(event);
-				if(event.getNewPage()!=null) {
-					System.out.println("WebWindowEvent::"+event.getNewPage().getUrl());	
-				}
-			}
-
-			@Override
-			public void webWindowClosed(WebWindowEvent event) {
-				System.out.println(event);
-				if(event.getNewPage()!=null) {
-					System.out.println("WebWindowEvent::"+event.getNewPage().getUrl());	
-				}
-			}
-			
-		});
+//		webClient.setJavaScriptErrorListener(new JavaScriptErrorListener() {
+//
+//			@Override
+//			public void scriptException(HtmlPage page, ScriptException scriptException) {
+//				// TODO Auto-generated method stub
+//				System.out.println(scriptException.getMessage());
+//			}
+//
+//			@Override
+//			public void timeoutError(HtmlPage page, long allowedTime, long executionTime) {
+//				// TODO Auto-generated method stub
+//				System.out.println(executionTime);
+//			}
+//
+//			@Override
+//			public void malformedScriptURL(HtmlPage page, String url, MalformedURLException malformedURLException) {
+//				// TODO Auto-generated method stub
+//				System.out.println(malformedURLException.getMessage());
+//			}
+//
+//			@Override
+//			public void loadScriptError(HtmlPage page, URL scriptUrl, Exception exception) {
+//				// TODO Auto-generated method stub
+//				System.out.println(exception.getMessage());
+//			}
+//			
+//		});
+//		webClient.setConfirmHandler(new ConfirmHandler() {
+//
+//			@Override
+//			public boolean handleConfirm(Page page, String message) {
+//				System.out.println("ConfirmHandler::"+page.getUrl());
+//				System.out.println(message);
+//				return false;
+//			}
+//			
+//		});
+//		webClient.setOnbeforeunloadHandler(new OnbeforeunloadHandler() {
+//
+//			@Override
+//			public boolean handleEvent(Page page, String returnValue) {
+//				System.out.println("AttachmentHandler::"+page.getUrl());
+//				System.out.println(returnValue);
+//				return false;
+//			}
+//			
+//		});
+//		webClient.setAttachmentHandler(new AttachmentHandler() {
+//
+//			@Override
+//			public void handleAttachment(Page page) {
+//				System.out.println("AttachmentHandler::"+page.getUrl());	
+//			}
+//			
+//		});
+//		webClient.addWebWindowListener(new WebWindowListener() {
+//
+//			@Override
+//			public void webWindowOpened(WebWindowEvent event) {
+//				System.out.println(event);
+//				if(event.getNewPage()!=null) {
+//					System.out.println("WebWindowEvent::"+event.getNewPage().getUrl());	
+//				}
+//				
+//			}
+//
+//			@Override
+//			public void webWindowContentChanged(WebWindowEvent event) {
+//				System.out.println(event);
+//				if(event.getNewPage()!=null) {
+//					System.out.println("WebWindowEvent::"+event.getNewPage().getUrl());	
+//				}
+//			}
+//
+//			@Override
+//			public void webWindowClosed(WebWindowEvent event) {
+//				System.out.println(event);
+//				if(event.getNewPage()!=null) {
+//					System.out.println("WebWindowEvent::"+event.getNewPage().getUrl());	
+//				}
+//			}
+//			
+//		});
 		
 		/**==test**/
-		AjaxController ac = new NicelyResynchronizingAjaxController();
-		
-        webClient.setAjaxController(ac);
+//		AjaxController ac = new NicelyResynchronizingAjaxController();
+//		
+//        webClient.setAjaxController(ac);
         webClient.getOptions().setThrowExceptionOnScriptError(false);
 		webClient.getOptions().setRedirectEnabled(true);
 		webClient.getOptions().setScreenWidth(2048);
@@ -140,9 +140,9 @@ public class ZhengFuTest {
 		webClient.getOptions().setCssEnabled(true);
 		webClient.getOptions().setJavaScriptEnabled(true);
 		webClient.getOptions().setActiveXNative(true);
-		webClient.getOptions().setTimeout(200000);
-		webClient.setJavaScriptTimeout(200000);
-		webClient.getJavaScriptEngine().setJavaScriptTimeout(200000);
+		webClient.getOptions().setTimeout(100000);
+		webClient.setJavaScriptTimeout(100000);
+		webClient.getJavaScriptEngine().setJavaScriptTimeout(100000);
 		//PostponedAction as = new PostponedAction ();		WebWindowListener wwl = new 
 		
 		
@@ -248,7 +248,7 @@ public class ZhengFuTest {
 				int yiuee= rd.nextInt(10);
 				
 				page2.executeJavaScript("var mm2 = document.createEvent('MouseEvent');mm2.initMouseEvent('mousemove', true, true, mm2.view,0, "+(-339 +i-24 )+", "+( 512-yiuee+5)+", "+(-339 +i-24 )+","+( 417-yiuee+5)+",false, false, false, false,0, null);document.dispatchEvent(mm2);");
-				//Thread.sleep(10*yiue);
+				//Thread.sleep(45);
 				
 				ScriptResult bddbbefd = page2.executeJavaScript("$('#sdsda11').css('left');");
 				System.out.println(bddbbefd.getJavaScriptResult()+"||"+System.currentTimeMillis());
@@ -324,9 +324,9 @@ public class ZhengFuTest {
 			Thread.sleep(10500);
 			
 			HtmlPage page3 = (HtmlPage) ww.getEnclosedPage();
-			doSomeThing(page3);
+			//doSomeThing(page3);
 			
-			Thread.sleep(10500);
+			//Thread.sleep(10500);
 			
 			Set<Cookie> cookies = webClient.getCookies(new URL("http://api.geetest.com"));
 		    for(Cookie ck:cookies) {
@@ -632,7 +632,7 @@ public class ZhengFuTest {
 			int yiuee= rd.nextInt(10);
 			
 			page2.executeJavaScript("var mm2 = document.createEvent('MouseEvent');mm2.initMouseEvent('mousemove', true, true, mm2.view,0, "+(-339 +i-24 )+", "+( 512-yiuee+5)+", "+(-339 +i-24 )+","+( 417-yiuee+5)+",false, false, false, false,0, null);document.dispatchEvent(mm2);");
-			//Thread.sleep(10*yiue);
+			Thread.sleep(40);
 			
 			ScriptResult bddbbefd = page2.executeJavaScript("$('#sdsda11').css('left');");
 			System.out.println(bddbbefd.getJavaScriptResult()+"||"+System.currentTimeMillis());
