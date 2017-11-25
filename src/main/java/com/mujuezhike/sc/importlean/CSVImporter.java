@@ -53,6 +53,8 @@ public class CSVImporter {
 	            default:    
 	                code = "GBK";    
 	        }    
+	        
+	        bin.close();
 	        return code;  
 	}
 	 
